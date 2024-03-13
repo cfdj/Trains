@@ -1,0 +1,219 @@
+[gd_scene load_steps=29 format=3 uid="uid://c88pqgcbvn1v6"]
+
+[ext_resource type="Script" path="res://LevelManager.gd" id="1_kccjy"]
+[ext_resource type="Texture2D" uid="uid://lmaxrb0mlup7" path="res://Sprites/Background.png" id="1_whw7i"]
+[ext_resource type="Script" path="res://Player.gd" id="2_yg1x2"]
+[ext_resource type="Texture2D" uid="uid://850laymsl4nt" path="res://rail.png" id="3_5fgtm"]
+[ext_resource type="Texture2D" uid="uid://bhia5xg07umre" path="res://Sprites/DuckTender.png" id="4_2to0n"]
+[ext_resource type="Texture2D" uid="uid://b7lsnkx2jut4g" path="res://Sprites/Duck.png" id="4_vjebn"]
+[ext_resource type="Texture2D" uid="uid://cinq3psnxpigs" path="res://Sprites/EastCoaster.png" id="5_r3rcr"]
+[ext_resource type="Texture2D" uid="uid://bdhe8fu07icgk" path="res://Sprites/Ground.png" id="6_inuwp"]
+[ext_resource type="Texture2D" uid="uid://c5pyiyifoieoc" path="res://Sprites/Carrige.png" id="6_lub58"]
+[ext_resource type="Texture2D" uid="uid://cxtxachm5wvf0" path="res://Sprites/Clouds.png" id="9_he44b"]
+[ext_resource type="Texture2D" uid="uid://dicx3id0w60df" path="res://Sprites/Hills.png" id="10_2o38h"]
+[ext_resource type="Texture2D" uid="uid://dv0v4mxkc76y0" path="res://Sprites/Close.png" id="11_ej7ot"]
+[ext_resource type="Texture2D" uid="uid://bwwtyjsfgjcy2" path="res://Sprites/steam.png" id="11_yguao"]
+[ext_resource type="Texture2D" uid="uid://cfvk0ebj2418m" path="res://Sprites/Foreground.png" id="12_unx0s"]
+[ext_resource type="Script" path="res://CameraFollow.gd" id="13_yg80p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m6mi3"]
+atlas = ExtResource("5_r3rcr")
+region = Rect2(0, 0, 98, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtg5n"]
+atlas = ExtResource("5_r3rcr")
+region = Rect2(98, 0, 98, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_biedx"]
+atlas = ExtResource("5_r3rcr")
+region = Rect2(196, 0, 98, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5g3r5"]
+atlas = ExtResource("5_r3rcr")
+region = Rect2(294, 0, 98, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_itu8w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m6mi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtg5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_biedx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5g3r5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u8u6t"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qfcrw"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ttl4w"]
+atlas = ExtResource("4_vjebn")
+region = Rect2(0, 0, 100, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yi1v"]
+atlas = ExtResource("4_vjebn")
+region = Rect2(100, 0, 100, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3onj0"]
+atlas = ExtResource("4_vjebn")
+region = Rect2(200, 0, 100, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmrlp"]
+atlas = ExtResource("4_vjebn")
+region = Rect2(300, 0, 100, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_47q3c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ttl4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yi1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3onj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmrlp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_1mx7s"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+
+[node name="Node2D" type="Node2D" node_paths=PackedStringArray("players")]
+script = ExtResource("1_kccjy")
+players = [NodePath("Player1"), NodePath("Player2")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+texture = ExtResource("1_whw7i")
+centered = false
+
+[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
+texture = ExtResource("9_he44b")
+centered = false
+
+[node name="Hills" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Hills"]
+texture = ExtResource("10_2o38h")
+centered = false
+
+[node name="Close" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Close"]
+texture = ExtResource("11_ej7ot")
+centered = false
+
+[node name="Ground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Ground"]
+texture = ExtResource("6_inuwp")
+centered = false
+
+[node name="Player2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("camera")]
+position = Vector2(74, 103)
+motion_mode = 1
+script = ExtResource("2_yg1x2")
+camera = NodePath("../Camera2D")
+
+[node name="Train2" type="Sprite2D" parent="Player2"]
+position = Vector2(-71, 3)
+texture = ExtResource("6_lub58")
+
+[node name="Train" type="AnimatedSprite2D" parent="Player2"]
+sprite_frames = SubResource("SpriteFrames_itu8w")
+autoplay = "default"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player2"]
+replication_config = SubResource("SceneReplicationConfig_u8u6t")
+
+[node name="rails2" type="Sprite2D" parent="Player2"]
+position = Vector2(0, 17)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5fgtm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player2"]
+position = Vector2(39, -17)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_qfcrw")
+texture = ExtResource("11_yguao")
+
+[node name="Player1" type="CharacterBody2D" parent="." node_paths=PackedStringArray("camera")]
+position = Vector2(60, 102)
+motion_mode = 1
+script = ExtResource("2_yg1x2")
+camera = NodePath("../Camera2D")
+
+[node name="Train2" type="Sprite2D" parent="Player1"]
+position = Vector2(-72, 4)
+texture = ExtResource("4_2to0n")
+
+[node name="Train" type="AnimatedSprite2D" parent="Player1"]
+sprite_frames = SubResource("SpriteFrames_47q3c")
+autoplay = "default"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="Player1"]
+replication_config = SubResource("SceneReplicationConfig_1mx7s")
+
+[node name="rails" type="Sprite2D" parent="Player1"]
+position = Vector2(0, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("3_5fgtm")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Player1"]
+position = Vector2(18, -16)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_qfcrw")
+texture = ExtResource("11_yguao")
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 0
+
+[node name="front" type="ParallaxLayer" parent="ParallaxForeground"]
+z_as_relative = false
+motion_mirroring = Vector2(256, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/front"]
+z_index = 1
+texture = ExtResource("12_unx0s")
+centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(128, 64)
+script = ExtResource("13_yg80p")

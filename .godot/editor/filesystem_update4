@@ -1,0 +1,5 @@
+res://Level.tscn
+res://LevelManager.gd
+res://MainMenu.gd
+res://Player.gd
+res://CameraFollow.gd

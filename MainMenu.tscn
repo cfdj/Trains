@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyboxjv0i2poj"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_tpnpu"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tpnpu")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -23.0
+offset_top = -31.0
+offset_right = 23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
+[node name="Join" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Join
+"
+
+[node name="Host" type="Button" parent="."]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Host"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Join" to="." method="join"]
+[connection signal="pressed" from="Host" to="." method="host"]
